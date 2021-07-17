@@ -1,0 +1,6 @@
+env/
+venv/
+.devcontainer
+.vscode
+.vscode
+.env
