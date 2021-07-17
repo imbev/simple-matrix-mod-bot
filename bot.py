@@ -4,6 +4,8 @@ import os
 import dotenv; dotenv.load_dotenv()
 
 local_storage_path = "./.storage/"
+if not os.path.isdir(local_storage_path):
+    os.mkdir(local_storage_path)
 
 creds = botlib.Creds(
     os.getenv("HOMESERVER"),
@@ -11,3 +13,7 @@ creds = botlib.Creds(
     os.getenv("PASSWORD"),
     f"{local_storage_path}/session.txt"
 )
+
+bot = botlib.Bot(creds)
+
+bot.run()
