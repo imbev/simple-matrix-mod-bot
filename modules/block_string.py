@@ -9,6 +9,8 @@ class BlockString:
         self.commands = [
             ["block_string", "This command adds strings to the blacklist when used by an admin"]
         ]
+        self._bot.add_message_listener(self.block_strings)
+        self._bot.add_message_listener(self.add_new_blocked_string)
     
     def read_blacklist(self):
         try:

@@ -1,5 +1,6 @@
 import simplematrixbotlib as botlib
 import os
+import modules
 
 import dotenv; dotenv.load_dotenv()
 
@@ -17,5 +18,12 @@ creds = botlib.Creds(
 bot = botlib.Bot(creds)
 
 bot.prefix = "/"
+
+admin_ids = []
+
+bot_modules = [
+    modules.BlockString(admin_ids, bot, f"{local_storage_path}/string_blocklist.txt")
+]
+
 
 bot.run()
