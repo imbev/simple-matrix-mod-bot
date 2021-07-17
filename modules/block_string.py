@@ -47,6 +47,7 @@ class BlockString:
                 if message.sender == id:
                     temp = True
             if not temp:
+                self._bot.api.send_text_message(room.room_id, "This command is admin only.")
                 return
             for arg in match.args:
                 self.string_blacklist.append(arg)
