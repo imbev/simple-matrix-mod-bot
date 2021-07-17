@@ -37,8 +37,8 @@ class BlockString:
     
     async def block_strings(self, room, message):
         for string in self.string_blacklist:
-            if string in message.content:
-                self._bot.api.async_client.room_redact(room.room_id, message.event_id, "Part of this message has been blacklisted.")
+            if string in message.body:
+                await self._bot.api.async_client.room_redact(room.room_id, message.event_id, "Part of this message has been blacklisted.")
     
     async def add_new_blocked_string(self, room, message):
         match = botlib.MessageMatch(room, message, self._bot)
@@ -49,7 +49,7 @@ class BlockString:
                 if message.sender == id:
                     temp = True
             if not temp:
-                self._bot.api.send_text_message(room.room_id, "This command is admin only.")
+                await self._bot.api.send_text_message(room.room_id, "This command is admin only.")
                 return
             for arg in match.args:
                 self.string_blacklist.append(arg)
