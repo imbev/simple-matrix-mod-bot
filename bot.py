@@ -4,7 +4,7 @@ import modules
 
 import dotenv; dotenv.load_dotenv()
 
-local_storage_path = "./.storage/"
+local_storage_path = os.getenv("STORAGE")
 if not os.path.isdir(local_storage_path):
     os.mkdir(local_storage_path)
 
@@ -17,7 +17,7 @@ creds = botlib.Creds(
 
 bot = botlib.Bot(creds)
 
-bot.prefix = "/"
+bot.prefix = os.getenv("PREFIX")
 
 admin_ids = []
 
