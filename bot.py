@@ -16,4 +16,6 @@ creds = botlib.Creds(
 
 bot = botlib.Bot(creds)
 
+bot.prefix = "/"
+
 bot.run()
